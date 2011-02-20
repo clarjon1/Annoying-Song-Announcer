@@ -16,39 +16,39 @@ announce();
     }
     elsif($_[0] eq "next"){
    playnext();
-  
+
     }
-        elsif($_[0] eq "prev"){
+	elsif($_[0] eq "prev"){
 playprev();
 
     }
  elsif($_[0] eq "play"){
    playpause();
-   
+
     }
  elsif($_[0] eq "pause"){
    playpause();
-   
+
     }
  elsif($_[0] eq "stop"){
    playstop();
-   
+
     }
  elsif($_[0] eq "exit"){
    playexit();
-   
+
     }
  elsif($_[0] eq "start"){
    playstart();
-   
+
     }
  elsif($_[0] eq "version"){
    playversion();
-   
+
     }
      elsif($_[0] eq "boring"){
    playboring();
-   
+
     }
 
     else{
@@ -61,18 +61,18 @@ sub playboring{
     my $META = `qdbus $player /Player GetMetadata`;
     my $META2 = "volume: " . `qdbus $player /Player VolumeGet`;
     my $RANGE = 15;
-  
+
     my ($ARTIST) = ( $META =~ /artist: (.*)/  ? $1 : "-" );
     my ($TITLE)  = ( $META =~ /title: (.*)/   ? $1 : "not playing" );
     my ($ALBUM)  = ( $META =~ /album: (.*)/   ? $1 : "-" );
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
-	
+
 	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
 	$time_total_secs /= 1000;
-	
+
 	my $time_played_secs = `qdbus $player /Player PositionGet`;
 	$time_played_secs /= 1000;
-	
+
 	my $time_remaining_secs = $time_total_secs - $time_played_secs;
 
     # Zeiten in richtige Minutenangabe umwandeln
@@ -93,7 +93,7 @@ sub playboring{
     my  $text = ''.roundit($time_played[0]).':';
     if ($time_played[1] < 10) { $text .= '0'; }
     $text .= $time_played[1];
-    
+
     # Verbleibende Zeit
     #$text .= ' /'.roundit($time_remaining[0]).':';
     $text .= ' /'.roundit($time_total[0]).':';
@@ -121,13 +121,13 @@ sub announce{
     my ($TITLE)  = ( $META =~ /title: (.*)/   ? $1 : "not playing" );
     my ($ALBUM)  = ( $META =~ /album: (.*)/   ? $1 : "-" );
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
-	
+
 	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
 	$time_total_secs /= 1000;
-	
+
 	my $time_played_secs = `qdbus $player /Player PositionGet`;
 	$time_played_secs /= 1000;
-	
+
 	my $time_remaining_secs = $time_total_secs - $time_played_secs;
 
     # Zeiten in richtige Minutenangabe umwandeln
@@ -148,7 +148,7 @@ sub announce{
     my  $text = ''.roundit($time_played[0]).':';
     if ($time_played[1] < 10) { $text .= '0'; }
     $text .= $time_played[1];
-    
+
     # Verbleibende Zeit
     #$text .= ' /'.roundit($time_remaining[0]).':';
     $text .= ' /'.roundit($time_total[0]).':';
@@ -198,5 +198,5 @@ sub announce{
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
     IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! ;) ");
-    
+
 }
