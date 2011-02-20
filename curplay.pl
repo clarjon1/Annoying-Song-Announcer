@@ -2,8 +2,8 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "0.8.47";
-my $player = "org.mpris.amarok"; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
+my $version = "1.0.0";
+my $player = "org.mpris.clementine"; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
 Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
 
@@ -166,31 +166,32 @@ sub announce{
 }
   sub playnext {
     IRC::print("Playing Next Song");
-    system('qdbus $player /Player Next');
+    system('qdbus '.$player.' /Player Next');
 }
   sub playprev {
     IRC::print("Playing Previous Song");
-    system('qdbus $player /Player Prev');
+    system('qdbus '.$player.' /Player Prev');
 }
   sub playpause {
     IRC::print("Playing/Pausing Song");
-    system('qdbus $player /Player PlayPause');
+    system('qdbus '.$player.' /Player PlayPause');
 }
   sub playstop {
     IRC::print("Stopping Song");
-    system('qdbus $player /Player Stop');
+    system('qdbus '.$player.' /Player Stop');
 }
   sub playexit {
     IRC::print("Stopping Amarok");
-    system('qdbus $player /MainApplication quit');
+    system('qdbus '.$player.' /MainApplication quit');
 }
   sub playstart {
     my $RANGE = 15;
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
-    IRC::command("/me \003".$RAND1."is now \003".$RAND2."Starting \003".$RAND3."Amarok ");
-    system("amarok");
+    IRC::command("/me \003".$RAND1."is now \003".$RAND2."Starting \003".$RAND3."The Music! ");
+if($player eq "org.mpris.amarok"){ system("amarok &");}
+elsif($player eq "org.mpris.clementine"){system("clementine &");}
 }
   sub playversion {
     my $RANGE = 15;
