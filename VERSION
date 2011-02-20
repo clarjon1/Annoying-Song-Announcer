@@ -1,1 +1,14 @@
+This file contains the changelog for the Annoying Song Announcer.
+
+------- 0.8.47 => 1.0.0 ---------- 02/20/2011 -- Clarjon1
+Major bug fixes:
+Fixed the song controls -- they now work properly
+Fixed the player starter -- now will start the appropriate audio player, depending on the qdbus configuration.
+Changed the player starte message -- Now says it's starting The Music instead of a specific music player
+
+TODO:
+Add in play-count
+Add in option to annoyingly display total length of playlist.
+-----------------------
+
 Clarjon1 and Flare183's Annoying Song Announcer VERSION 0.8.47!!
