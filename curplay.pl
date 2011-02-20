@@ -181,7 +181,7 @@ sub announce{
     system('qdbus '.$player.' /Player Stop');
 }
   sub playexit {
-    IRC::print("Stopping Amarok");
+    IRC::print("Stopping Player");
     system('qdbus '.$player.' /MainApplication quit');
 }
   sub playstart {
