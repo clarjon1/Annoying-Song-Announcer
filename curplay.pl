@@ -2,7 +2,7 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.0";
+my $version = "1.0.1";
 my $player = "org.mpris.clementine"; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
 Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
@@ -198,6 +198,6 @@ elsif($player eq "org.mpris.clementine"){system("clementine &");}
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
-    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! ;) ");
+    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
 
 }

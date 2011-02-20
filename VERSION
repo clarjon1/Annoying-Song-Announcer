@@ -1,5 +1,6 @@
 This file contains the changelog for the Annoying Song Announcer.
-
+------- 1.0.0 => 1.0.1---------- 02/20/2011 -- Clarjon1
+Added the github URL to the '/curplay version' command
 ------- 0.8.47 => 1.0.0 ---------- 02/20/2011 -- Clarjon1
 Major bug fixes:
 Fixed the song controls -- they now work properly
