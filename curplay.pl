@@ -2,7 +2,7 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.1";
+my $version = "1.0.2";
 my $player = "org.mpris.clementine"; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
 Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
