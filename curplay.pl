@@ -189,7 +189,7 @@ elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Pla
 }
   sub playexit {
     IRC::print("Stopping Player");
-    IRC::print("This doesn't work for clementine yet');
+   elsif($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
     system('qdbus '.$player.' /MainApplication quit');
 }
   sub playstart {
@@ -206,4 +206,5 @@ elsif($player eq "org.mpris.clementine"){system("clementine &");}
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
-    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");}
+    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
+    }
