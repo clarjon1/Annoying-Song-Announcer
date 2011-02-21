@@ -189,7 +189,7 @@ elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Pla
 }
   sub playexit {
     IRC::print("Stopping Player");
-   elsif($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
+   if($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
     system('qdbus '.$player.' /MainApplication quit');
 }
   sub playstart {
