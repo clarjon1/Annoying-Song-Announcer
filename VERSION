@@ -1,4 +1,8 @@
 This file contains the changelog for the Annoying Song Announcer.
+------- 1.0.6 => 1.0.7--------- 02/20/2011 -- clarjon1
+Bugfix!
+Clementine will now play. Grrr, API again!
+
 ------- 1.0.2 => 1.0.6---------- 02/20/2011 -- clarjon1
 Added barebones framework for a configuration file.
 Currently, can set player in .asaconf file in home directory,
