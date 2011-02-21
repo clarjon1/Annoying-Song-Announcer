@@ -1,4 +1,9 @@
 This file contains the changelog for the Annoying Song Announcer.
+------- 1.0.2 => 1.0.6---------- 02/20/2011 -- clarjon1
+Added barebones framework for a configuration file.
+Currently, can set player in asaconf file in xchat directory,
+with 'player-dbus: org.mpris.playername'
+Will need to clean it up to use something other than cat in the future! lol
 ------- 1.0.1 => 1.0.2---------- 02/20/2011 -- Flare183
 Changed the "Stopping AmaroK" to "Stopping Player"
 ------- 1.0.0 => 1.0.1---------- 02/20/2011 -- Clarjon1

@@ -3,10 +3,10 @@
 use strict;
 use Xchat qw( :all );
 my $version = "1.0.2";
-my $player = "org.mpris.clementine"; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
+my $settings = `cat ~/.xchat2/asaconf`; #org.mpris.amarok for amarok, org.mpris.clementine for clementine
 Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
-
+my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::add_command_handler("curplay", "cmd_amacurplay");
 
 sub cmd_amacurplay {

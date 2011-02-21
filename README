@@ -1,4 +1,27 @@
-This will have the readme for Clarjon1 and Flare183's annoying song announcer soon!
+Welcome to the Clarjon1 and Flare183 Annoying Song Announcer.
 
-I promise!
+This spammy song announcer is for Amarok and Clementine on Linux, for the xchat IRC client. 
+It is under the GLP3 license.
 
+It's very fast and simple.
+The commands are as follows:
+/curplay - announces the songs
+/curplay boring - announces the songs in a boring, color free way
+/curplay next - plays next song
+/curplay prev - plays previous song
+/curplay stop - stops playback
+/curplay play - plays/pauses song
+/curplay pause - plays/pauses song
+/curplay start - starts media player
+/curplay exit - stops media player
+/curplay version - colorfully spams the announcer version and github url
+
+Currently, you can quickly and easily configure which media player the annoucner will use,
+create a file in your ~/.xchat2/ directory called 'asaconf' and put in the following:
+player-dbus: org.mpris.amarok
+OR
+player-dbus: org.mpris.clementine
+
+(Note: the announcer will default to amarok!)
+
+An example asaconf is included for you to use. This will be the basis of our configuration file.
