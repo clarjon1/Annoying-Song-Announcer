@@ -1,4 +1,7 @@
 This file contains the changelog for the Annoying Song Announcer.
+------- 1.0.8 => 1.0.10 --------02/20/2011 -- clarjon1
+You can now reload the configuration file! /curplay reload
+also, some bugfixes. woo!
 ------- 1.0.7 => 1.0.8--------- 02/20/2011 -- Flare183
 Grahh! Bugfixes.
 ------- 1.0.6 => 1.0.7--------- 02/20/2011 -- clarjon1

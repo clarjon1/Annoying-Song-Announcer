@@ -2,11 +2,11 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.8";
+my $version = "1.0.10";
 my $settings = `cat ~/.asaconf`;
 Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
-my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" ); #org.mpris.amarok for amarok, org.mpris.clementine for clementine
+my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::add_command_handler("curplay", "cmd_amacurplay");
 
 sub cmd_amacurplay {
@@ -51,11 +51,21 @@ elsif($player eq "org.mpris.clementine"){clemplay();}
    playboring();
 
     }
+     elsif($_[0] eq "reload"){
+   reload();
+
+    }
 
     else{
-IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|version]");
+IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|version|reload]");
     }
 return Xchat::EAT_ALL;
+}
+sub reload{
+ $settings = `cat ~/.asaconf`;
+($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" ); 
+IRC::print("Settings reloaded.");
+
 }
 
 sub playboring{

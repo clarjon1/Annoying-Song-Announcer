@@ -15,9 +15,11 @@ The commands are as follows:
 /curplay start - starts media player
 /curplay exit - stops media player
 /curplay version - colorfully spams the announcer version and github url
+/curplay reload - reloads the ~/.asaconf file on the fly!
+
 
 Currently, you can quickly and easily configure which media player the annoucner will use,
-create a file in your ~/.xchat2/ directory called 'asaconf' and put in the following:
+create a file in your home directory called '.asaconf' and put in the following:
 player-dbus: org.mpris.amarok
 OR
 player-dbus: org.mpris.clementine
