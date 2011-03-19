@@ -14,7 +14,7 @@ AMAROK = `ls /usr/bin/ | grep amarok"`
 if
     $CLEMENTINE = "clementine"
 then
-    echo "I've see you are using clementine"
+    echo "I see your using clementine"
     echo "Copying clementine asaconf file..."
     cp -v $CURDIR/asaconf-clementine ~/.asaconf
     echo "Done Copying"
@@ -27,4 +27,13 @@ else
     if
 	$AMAROK = "amarok"
     then
-	
+	echo "Your using amarok"
+	echo "Copying AmaroK asaconf file..."
+	cp -v $CURDIR/asaconf-amarok ~/.asaconf
+	echo "Done copying"
+	echo "Copying Actual script to your xchat folder"
+	cp -v $CURDIR/curplay.pl ~/.xchat2/curplay.pl
+	echo "Done"
+	echo "Done Installing, have a nice day"
+	break
+fi
