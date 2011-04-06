@@ -63,7 +63,7 @@ return Xchat::EAT_ALL;
 }
 sub reload{
  $settings = `cat ~/.asaconf`;
-($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" ); 
+($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::print("Settings reloaded.");
 
 }
@@ -191,7 +191,7 @@ sub announce{
     IRC::print("Playing/Pausing Song");
 if($player eq "org.mpris.amarok"){ system("qdbus org.mpris.amarok /Player PlayPause");}
 elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Player Pause");}
-    
+
 }
   sub playstop {
     IRC::print("Stopping Song");

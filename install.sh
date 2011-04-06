@@ -6,10 +6,10 @@
 echo "Bash installer script for clarjon1 and Flare183's Annoying-Song-Announcer"
 echo "-------------------------------------------------------------------------"
 echo "Searching for clementine...."
-echo "(To begin with that is"
+echo "(To begin with that is)"
 
 CLEMENTINE = `ls /usr/bin/ | grep clementine`
-AMAROK = `ls /usr/bin/ | grep amarok"`
+AMAROK = `ls /usr/bin/ | grep amarok`
 
 if
     $CLEMENTINE = "clementine"
