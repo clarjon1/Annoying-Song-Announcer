@@ -5,11 +5,15 @@
 
 echo "Bash installer script for clarjon1 and Flare183's Annoying-Song-Announcer"
 echo "-------------------------------------------------------------------------"
-echo "Searching for clementine...."
-echo "(To begin with that is)"
+echo "Setting up Variables..."
 
 CLEMENTINE = `ls /usr/bin/ | grep clementine`
 AMAROK = `ls /usr/bin/ | grep amarok`
+CURDIR = `pwd`
+echo "Done."
+
+echo "Searching for clementine...."
+echo "(To begin with that is)"
 
 if
     $CLEMENTINE = "clementine"
