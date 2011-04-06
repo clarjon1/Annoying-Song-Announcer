@@ -15,8 +15,7 @@ echo "Done."
 echo "Searching for clementine...."
 echo "(To begin with that is)"
 
-if
-    $CLEMENTINE = "clementine"
+if [ $CLEMENTINE = "clementine" ]
 then
     echo "I see your using clementine"
     echo "Copying clementine asaconf file..."
@@ -28,8 +27,7 @@ then
     echo "Done installing, have a nice day"
     break
 else
-    if
-	$AMAROK = "amarok"
+    if [ $AMAROK = "amarok" ]
     then
 	echo "Your using amarok"
 	echo "Copying AmaroK asaconf file..."
@@ -40,4 +38,13 @@ else
 	echo "Done"
 	echo "Done Installing, have a nice day"
 	break
-fi
+    else
+	if [ -z "$CLEMENTINE" ]
+	then
+	    echo "Clementine isn't installed"
+	else
+	    if [ -z "$AMAROK" ]
+	    then
+		echo "AmaroK isn't installed."
+		break
+	    fi
