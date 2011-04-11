@@ -48,3 +48,4 @@ else
 		echo "AmaroK isn't installed."
 		break
 	    fi
+exit 0
