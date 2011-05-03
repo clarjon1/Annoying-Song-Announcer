@@ -11,58 +11,58 @@ IRC::add_command_handler("curplay", "cmd_amacurplay");
 
 sub cmd_amacurplay {
     if(!$_[0]){
-announce();
+	announce();
 
     }
     elsif($_[0] eq "next"){
-   playnext();
+	playnext();
 
     }
-	elsif($_[0] eq "prev"){
-playprev();
+    elsif($_[0] eq "prev"){
+	playprev();
 
     }
- elsif($_[0] eq "play"){
- if($player eq "org.mpris.amarok"){ playpause();}
-elsif($player eq "org.mpris.clementine"){clemplay();}
+    elsif($_[0] eq "play"){
+	if($player eq "org.mpris.amarok"){ playpause();}
+	elsif($player eq "org.mpris.clementine"){clemplay();}
 
     }
- elsif($_[0] eq "pause"){
-   playpause();
+    elsif($_[0] eq "pause"){
+	playpause();
 
     }
- elsif($_[0] eq "stop"){
-   playstop();
+    elsif($_[0] eq "stop"){
+	playstop();
 
     }
- elsif($_[0] eq "exit"){
-   playexit();
+    elsif($_[0] eq "exit"){
+	playexit();
 
     }
- elsif($_[0] eq "start"){
-   playstart();
+    elsif($_[0] eq "start"){
+	playstart();
 
     }
- elsif($_[0] eq "version"){
-   playversion();
+    elsif($_[0] eq "version"){
+	playversion();
 
     }
-     elsif($_[0] eq "boring"){
-   playboring();
+    elsif($_[0] eq "boring"){
+	playboring();
 
     }
-     elsif($_[0] eq "reload"){
-   reload();
+    elsif($_[0] eq "reload"){
+	reload();
 
     }
 
     else{
-IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|version|reload]");
+	IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|version|reload]");
     }
-return Xchat::EAT_ALL;
+    return Xchat::EAT_ALL;
 }
 sub reload{
- $settings = `cat ~/.asaconf`;
+    $settings = `cat ~/.asaconf`;
 ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::print("Settings reloaded.");
 
@@ -78,13 +78,13 @@ sub playboring{
     my ($ALBUM)  = ( $META =~ /album: (.*)/   ? $1 : "-" );
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
 
-	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
-	$time_total_secs /= 1000;
+    my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
+    $time_total_secs /= 1000;
 
-	my $time_played_secs = `qdbus $player /Player PositionGet`;
-	$time_played_secs /= 1000;
+    my $time_played_secs = `qdbus $player /Player PositionGet`;
+    $time_played_secs /= 1000;
 
-	my $time_remaining_secs = $time_total_secs - $time_played_secs;
+    my $time_remaining_secs = $time_total_secs - $time_played_secs;
 
     # Zeiten in richtige Minutenangabe umwandeln
     my @time_total = (0, $time_total_secs % 60);
@@ -114,10 +114,10 @@ sub playboring{
     IRC::command("/me is currently listening to [['$TITLE']] by [['$ARTIST']] from the album [['$ALBUM']] at [['$VOLUME%']] Volume, at position [['".$text."']]");
 
 
-  sub roundit{
-    my $number =shift;
-    return int($number + .5 * ($number <=> 0));
-}
+    sub roundit{
+	my $number =shift;
+	return int($number + .5 * ($number <=> 0));
+    }
 
 }
 
@@ -133,13 +133,13 @@ sub announce{
     my ($ALBUM)  = ( $META =~ /album: (.*)/   ? $1 : "-" );
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
 
-	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
-	$time_total_secs /= 1000;
+    my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
+    $time_total_secs /= 1000;
 
-	my $time_played_secs = `qdbus $player /Player PositionGet`;
-	$time_played_secs /= 1000;
+    my $time_played_secs = `qdbus $player /Player PositionGet`;
+    $time_played_secs /= 1000;
 
-	my $time_remaining_secs = $time_total_secs - $time_played_secs;
+    my $time_remaining_secs = $time_total_secs - $time_played_secs;
 
     # Zeiten in richtige Minutenangabe umwandeln
     my @time_total = (0, $time_total_secs % 60);
@@ -169,52 +169,52 @@ sub announce{
     IRC::command("/me \002\003".$RAND1."is currently listening to \003".$RAND2."[[\003".$RAND3."'$TITLE'\003".$RAND2."]] \003".$RAND1."by \003".$RAND2."[[\003".$RAND3."'$ARTIST'\003".$RAND2."]] \003".$RAND1."from the album \003".$RAND2."[[\003".$RAND3."'$ALBUM'\003".$RAND2."]] \003".$RAND1."at \003".$RAND2."[[\003".$RAND3."'$VOLUME%'\003".$RAND2."]]\003".$RAND1." Volume, at position \003".$RAND2."[[\003".$RAND3."'".$text."\003".$RAND2."']]");
 
 
-  sub roundit{
-    my $number =shift;
-    return int($number + .5 * ($number <=> 0));
-}
+    sub roundit{
+	my $number =shift;
+	return int($number + .5 * ($number <=> 0));
+    }
 
 }
-  sub playnext {
+sub playnext {
     IRC::print("Playing Next Song");
     system('qdbus '.$player.' /Player Next');
 }
-  sub playprev {
+sub playprev {
     IRC::print("Playing Previous Song");
     system('qdbus '.$player.' /Player Prev');
 }
-  sub clemplay {
+sub clemplay {
     IRC::print("Playing Song");
     system('qdbus '.$player.' /Player Play');
 }
-  sub playpause {
+sub playpause {
     IRC::print("Playing/Pausing Song");
-if($player eq "org.mpris.amarok"){ system("qdbus org.mpris.amarok /Player PlayPause");}
-elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Player Pause");}
+    if($player eq "org.mpris.amarok"){ system("qdbus org.mpris.amarok /Player PlayPause");}
+    elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Player Pause");}
 
 }
-  sub playstop {
+sub playstop {
     IRC::print("Stopping Song");
     system('qdbus '.$player.' /Player Stop');
 }
-  sub playexit {
+sub playexit {
     IRC::print("Stopping Player");
-   if($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
+    if($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
     system('qdbus '.$player.' /MainApplication quit');
 }
-  sub playstart {
+sub playstart {
     my $RANGE = 15;
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
     IRC::command("/me \003".$RAND1."is now \003".$RAND2."Starting \003".$RAND3."The Music! ");
-if($player eq "org.mpris.amarok"){ system("amarok &");}
-elsif($player eq "org.mpris.clementine"){system("clementine &");}
+    if($player eq "org.mpris.amarok"){ system("amarok &");}
+    elsif($player eq "org.mpris.clementine"){system("clementine &");}
 }
-  sub playversion {
+sub playversion {
     my $RANGE = 15;
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
     IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
-    }
+}
