@@ -1,4 +1,8 @@
 This file contains the changelog for the Annoying Song Announcer.
+------- 1.0.10 => 1.0.15 --------05/03/11 -- clarjon1
+Addded more annoying stats. Bitrate and samplerate.
+Flare tested to confirm working on clementine. Woot!
+Also, some cleanup.
 ------- 1.0.8 => 1.0.10 --------02/20/2011 -- clarjon1
 You can now reload the configuration file! /curplay reload
 also, some bugfixes. woo!
