@@ -224,5 +224,5 @@ elsif($player eq "org.mpris.clementine"){system("clementine &");}
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
-    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1 and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
+    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1, Kevin147, and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
     }
