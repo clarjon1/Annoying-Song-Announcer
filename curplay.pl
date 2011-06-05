@@ -2,10 +2,10 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.15";
+my $version = "1.0.16";
 my $settings = `cat ~/.asaconf`;
-Xchat::register("Clarjon1 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
-IRC::print("Clarjon1 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
+Xchat::register("Clarjon1, Flare183 and Kevin147's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
+IRC::print("Clarjon1, Flare183 and Kevin147's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
 my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::add_command_handler("curplay", "cmd_amacurplay");
 
@@ -71,6 +71,7 @@ IRC::print("Settings reloaded.");
 sub playboring{
     my $META = `qdbus $player /Player GetMetadata`;
     my $META2 = "volume: " . `qdbus $player /Player VolumeGet`;
+    my $META3 = "getcurrenttrack: " . `qdbus $player /TrackList GetCurrentTrack`;
     my $RANGE = 15;
 
     my ($ARTIST) = ( $META =~ /artist: (.*)/  ? $1 : "-" );
@@ -79,6 +80,7 @@ sub playboring{
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
     my ($BITRATE) = ( $META =~ /audio-bitrate: (.*)/  ? $1 : "-" );
     my ($SAMPLERATE) = ( $META =~ /audio-samplerate: (.*)/  ? $1 : "-" );
+    my ($GETTRACK) = ( $META3 =~ /getcurrenttrack: (.*)/  ? $1 : "-" );
 
 	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
 	$time_total_secs /= 1000;
@@ -113,7 +115,7 @@ sub playboring{
     if ($time_total[1] < 10) { $text .= '0'; }
     $text .= $time_total[1].'';
 
-    IRC::command("/me is currently listening to [['$TITLE']] by [['$ARTIST']] from the album [['$ALBUM']] at [['$VOLUME%']] Volume, at position [['".$text."']], bitrate [['$BITRATE']], and samplerate [['$SAMPLERATE']]");
+    IRC::command("/me is currently listening to [['$TITLE']] by [['$ARTIST']] from the album [['$ALBUM']] at [['$VOLUME%']] Volume, at position [['".$text."']], bitrate [['$BITRATE']], samplerate [['$SAMPLERATE']] And, Playlist Track Number: [['$GETTRACK']]");
 
 
   sub roundit{
@@ -126,6 +128,7 @@ sub playboring{
 sub announce{
     my $META = `qdbus $player /Player GetMetadata`;
     my $META2 = "volume: " . `qdbus $player /Player VolumeGet`;
+    my $META3 = "getcurrenttrack: " . `qdbus $player /TrackList GetCurrentTrack`;
     my $RANGE = 15;
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
@@ -136,6 +139,7 @@ sub announce{
     my ($VOLUME) = ( $META2 =~ /volume: (.*)/  ? $1 : "-" );
     my ($BITRATE) = ( $META =~ /audio-bitrate: (.*)/  ? $1 : "-" );
     my ($SAMPLERATE) = ( $META =~ /audio-samplerate: (.*)/  ? $1 : "-" );
+    my ($GETTRACK) = ( $META3 =~ /getcurrenttrack: (.*)/  ? $1 : "-" );
 
 	my ($time_total_secs) = ( $META =~ /mtime: (.+)/ ? $1 : "--" );
 	$time_total_secs /= 1000;
@@ -170,7 +174,7 @@ sub announce{
     if ($time_total[1] < 10) { $text .= '0'; }
     $text .= $time_total[1].'';
 
-    IRC::command("/me \002\003".$RAND1."is currently listening to \003".$RAND2."[[\003".$RAND3."'$TITLE'\003".$RAND2."]] \003".$RAND1."by \003".$RAND2."[[\003".$RAND3."'$ARTIST'\003".$RAND2."]] \003".$RAND1."from the album \003".$RAND2."[[\003".$RAND3."'$ALBUM'\003".$RAND2."]] \003".$RAND1."at \003".$RAND2."[[\003".$RAND3."'$VOLUME%'\003".$RAND2."]]\003".$RAND1." Volume, at position \003".$RAND2."[[\003".$RAND3."'".$text."\003".$RAND2."']]\003".$RAND1.", bitrate \003".$RAND2."[[\003".$RAND3."'$BITRATE'\003".$RAND2."]] \003".$RAND1."and samplerate \003".$RAND2."[[\003".$RAND3."'$SAMPLERATE'\003".$RAND2."]]");
+    IRC::command("/me \002\003".$RAND1."is currently listening to \003".$RAND2."[[\003".$RAND3."'$TITLE'\003".$RAND2."]] \003".$RAND1."by \003".$RAND2."[[\003".$RAND3."'$ARTIST'\003".$RAND2."]] \003".$RAND1."from the album \003".$RAND2."[[\003".$RAND3."'$ALBUM'\003".$RAND2."]] \003".$RAND1."at \003".$RAND2."[[\003".$RAND3."'$VOLUME%'\003".$RAND2."]]\003".$RAND1." Volume, at position \003".$RAND2."[[\003".$RAND3."'".$text."\003".$RAND2."']]\003".$RAND1.", bitrate \003".$RAND2."[[\003".$RAND3."'$BITRATE'\003".$RAND2."]] \003".$RAND1."samplerate \003".$RAND2."[[\003".$RAND3."'$SAMPLERATE'\003".$RAND2."]] \003".$RAND1."And, Playlist Track Number \003".$RAND2."[[\003".$RAND3."'$GETTRACK'\003".$RAND2."]]");
 
 
   sub roundit{
