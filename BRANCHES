@@ -1,0 +1,9 @@
+We now have two branches of ASA, to switch to the devel branch do the following:
+
+git checkout devel
+
+
+To switch back to the master (main branch) to this:
+
+git checkout master
+
