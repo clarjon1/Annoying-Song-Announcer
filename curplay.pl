@@ -2,7 +2,7 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.16";
+my $version = "1.0.17";
 my $settings = `cat ~/.asaconf`;
 Xchat::register("Clarjon1, Flare183 and Kevin147's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
 IRC::print("Clarjon1, Flare183 and Kevin147's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
@@ -57,7 +57,7 @@ elsif($player eq "org.mpris.clementine"){clemplay();}
     }
 
     else{
-IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|version]");
+IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|reload|version]");
     }
 return Xchat::EAT_ALL;
 }
