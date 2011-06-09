@@ -1,1 +1,1 @@
-player-dbus: org.mpris.amarok
+player-dbus: org.mpris.MediaPlayer2.amarok
