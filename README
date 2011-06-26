@@ -1,6 +1,6 @@
-Welcome to the Clarjon1 and Flare183 Annoying Song Announcer.
+Welcome to the Clarjon1, Flare183, and Kevin147's Annoying Song Announcer.
 
-This spammy song announcer is for Amarok and Clementine on Linux, for the xchat IRC client. 
+This spammy song announcer is for Amarok, Clementine, and Audacious on Linux, for the xchat IRC client. 
 It is under the GPL3 license.
 
 It's very fast and simple.
@@ -23,6 +23,8 @@ create a file in your home directory called '.asaconf' and put in the following:
 player-dbus: org.mpris.amarok
 OR
 player-dbus: org.mpris.clementine
+OR
+player-dbus: org.mpris.audacious
 
 (Note: the announcer will default to amarok!)
 
