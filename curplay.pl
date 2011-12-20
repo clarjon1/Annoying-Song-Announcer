@@ -4,7 +4,7 @@ use strict;
 use Xchat qw( :all );
 my $version = "1.0.17-devel";
 my $settings = `cat ~/.asaconf`;
-Xchat::register("Clarjon1, Kevin147 and Flare183's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
+Xchat::register("Clarjon1, Kevin147 and Flare183's annoying Song Announcer",$version,"Amarok/clementine xchat info");
 IRC::print("Clarjon1, Kevin147 and Flare183's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
 my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::add_command_handler("curplay", "cmd_amacurplay");
