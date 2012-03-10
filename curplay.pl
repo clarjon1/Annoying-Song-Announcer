@@ -2,10 +2,10 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.17";
+my $version = "1.0.19";
 my $settings = `cat ~/.asaconf`;
-Xchat::register("Clarjon1, Flare183 and Kevin147's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
-IRC::print("Clarjon1, Flare183 and Kevin147's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
+Xchat::register("Clarjon1 and Kevin147's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
+# IRC::print("Clarjon1 and Kevin147's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
 my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::add_command_handler("curplay", "cmd_amacurplay");
 
@@ -115,7 +115,7 @@ sub playboring{
     if ($time_total[1] < 10) { $text .= '0'; }
     $text .= $time_total[1].'';
 
-    IRC::command("/me is currently listening to [['$TITLE']] by [['$ARTIST']] from the album [['$ALBUM']] at [['$VOLUME%']] Volume, at position [['".$text."']], bitrate [['$BITRATE']], samplerate [['$SAMPLERATE']] And, Playlist Track Number: [['$GETTRACK']]");
+    IRC::command("/me is currently listening to [['$TITLE']] by [['$ARTIST']] from the album [['$ALBUM']] at [['$VOLUME%']] Volume, at position [['".$text."']], bitrate [['$BITRATE']], samplerate [['$SAMPLERATE']] And, Playlist Track Number: [['$GETTRACK']] ASAocd");
 
 
   sub roundit{
@@ -174,7 +174,7 @@ sub announce{
     if ($time_total[1] < 10) { $text .= '0'; }
     $text .= $time_total[1].'';
 
-    IRC::command("/me \002\003".$RAND1."is currently listening to \003".$RAND2."[[\003".$RAND3."'$TITLE'\003".$RAND2."]] \003".$RAND1."by \003".$RAND2."[[\003".$RAND3."'$ARTIST'\003".$RAND2."]] \003".$RAND1."from the album \003".$RAND2."[[\003".$RAND3."'$ALBUM'\003".$RAND2."]] \003".$RAND1."at \003".$RAND2."[[\003".$RAND3."'$VOLUME%'\003".$RAND2."]]\003".$RAND1." Volume, at position \003".$RAND2."[[\003".$RAND3."'".$text."\003".$RAND2."']]\003".$RAND1.", bitrate \003".$RAND2."[[\003".$RAND3."'$BITRATE'\003".$RAND2."]] \003".$RAND1."samplerate \003".$RAND2."[[\003".$RAND3."'$SAMPLERATE'\003".$RAND2."]] \003".$RAND1."And, Playlist Track Number \003".$RAND2."[[\003".$RAND3."'$GETTRACK'\003".$RAND2."]]");
+    IRC::command("/me \002\003".$RAND1."is currently listening to \003".$RAND2."[[\003".$RAND3."'$TITLE'\003".$RAND2."]] \003".$RAND1."by \003".$RAND2."[[\003".$RAND3."'$ARTIST'\003".$RAND2."]] \003".$RAND1."from the album \003".$RAND2."[[\003".$RAND3."'$ALBUM'\003".$RAND2."]] \003".$RAND1."at \003".$RAND2."[[\003".$RAND3."'$VOLUME%'\003".$RAND2."]]\003".$RAND1." Volume, at position \003".$RAND2."[[\003".$RAND3."'".$text."\003".$RAND2."']]\003".$RAND1.", bitrate \003".$RAND2."[[\003".$RAND3."'$BITRATE'\003".$RAND2."]] \003".$RAND1."samplerate \003".$RAND2."[[\003".$RAND3."'$SAMPLERATE'\003".$RAND2."]] \003".$RAND1."And, Playlist Track Number \003".$RAND2."[[\003".$RAND3."'$GETTRACK'\003".$RAND2."]] ASAocd");
 
 
   sub roundit{
@@ -224,5 +224,5 @@ elsif($player eq "org.mpris.clementine"){system("clementine &");}
     my $RAND1 = int(rand($RANGE));
     my $RAND2 = int(rand($RANGE));
     my $RAND3 = int(rand($RANGE));
-    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1, Kevin147, and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer ) ");
+    IRC::command("/me \003".$RAND1."is using \003".$RAND2."the homegrown \003".$RAND3."Clarjon1, Kevin147, and Flare183's \003".$RAND1."Annoying \003".$RAND2."Song\003".$RAND3." Announcer on-chat-display (ASAocd) \003".$RAND2."VERSION\003".$RAND1." ".$version."!! Hosted on Github ( https://github.com/clarjon1/Annoying-Song-Announcer )  ");
     }
