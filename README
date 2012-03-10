@@ -26,4 +26,4 @@ player-dbus: org.mpris.clementine
 
 (Note: the announcer will default to amarok!)
 
-An example asaconf is included for you to use. This will be the basis of our configuration file.
+Two example configuration files have been included. One for amarok, and one for clementine. feel free to copy to ~/.asaconf
