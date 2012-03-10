@@ -2,57 +2,58 @@
 
 use strict;
 use Xchat qw( :all );
-my $version = "1.0.19";
-my $settings = `cat ~/.asaconf`;
+my $version = "1.0.21";
+my $settings = `cat ~/.asaconf`; # TODO: Find better way to do this. I know there is one, but i'm lazy -- cj1
 Xchat::register("Clarjon1 and Kevin147's annoying Song Announcer",$version,"Amarok/clemntine xchat info");
-# IRC::print("Clarjon1 and Kevin147's annoying Song Announcer ".$version." for XChat \cB\cC3loaded\cC0 :)");
-my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
+# Checks to see if user has set the player in the settings file.
+#if not, default to Amarok
+my ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" ); 
+#tells xchat to pass curplay onto it
 IRC::add_command_handler("curplay", "cmd_amacurplay");
 
 sub cmd_amacurplay {
     if(!$_[0]){
-announce();
-
+  announce();
     }
     elsif($_[0] eq "next"){
-   playnext();
+  playnext();
 
     }
-	elsif($_[0] eq "prev"){
-playprev();
+    elsif($_[0] eq "prev"){
+  playprev();
 
     }
- elsif($_[0] eq "play"){
- if($player eq "org.mpris.amarok"){ playpause();}
-elsif($player eq "org.mpris.clementine"){clemplay();}
+    elsif($_[0] eq "play"){
+       if($player eq "org.mpris.amarok"){ playpause();}
+       elsif($player eq "org.mpris.clementine"){clemplay();}
 
     }
- elsif($_[0] eq "pause"){
-   playpause();
+    elsif($_[0] eq "pause"){
+  playpause();
 
     }
- elsif($_[0] eq "stop"){
-   playstop();
+    elsif($_[0] eq "stop"){
+  playstop();
 
     }
- elsif($_[0] eq "exit"){
-   playexit();
+    elsif($_[0] eq "exit"){
+  playexit();
 
     }
- elsif($_[0] eq "start"){
-   playstart();
+    elsif($_[0] eq "start"){
+  playstart();
 
     }
- elsif($_[0] eq "version"){
-   playversion();
+    elsif($_[0] eq "version"){
+  playversion();
 
     }
-     elsif($_[0] eq "boring"){
-   playboring();
+    elsif($_[0] eq "boring"){
+  playboring();
 
     }
-     elsif($_[0] eq "reload"){
-   reload();
+    elsif($_[0] eq "reload"){
+  reload();
 
     }
 
@@ -62,7 +63,7 @@ IRC::print("usage: /curplay [boring|next|prev|play|pause|stop|exit|start|reload|
 return Xchat::EAT_ALL;
 }
 sub reload{
- $settings = `cat ~/.asaconf`;
+$settings = `cat ~/.asaconf`;
 ($player) = ($settings =~ /player-dbus: (.*)/ ? $1 : "org.mpris.amarok" );
 IRC::print("Settings reloaded.");
 
@@ -207,7 +208,7 @@ elsif($player eq "org.mpris.clementine"){system("qdbus org.mpris.clementine /Pla
 }
   sub playexit {
     IRC::print("Stopping Player");
-   if($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
+  if($player eq "org.mpris.clementine"){ IRC::print("This doesn't work for clementine yet");}
     system('qdbus '.$player.' /MainApplication quit');
 }
   sub playstart {
