@@ -7,6 +7,7 @@ It's very fast and simple.
 The commands are as follows:
 /curplay - announces the songs
 /curplay boring - announces the songs in a boring, color free way
+/curplay sane - announces the songs in an even more boring, color free way
 /curplay next - plays next song
 /curplay prev - plays previous song
 /curplay stop - stops playback
